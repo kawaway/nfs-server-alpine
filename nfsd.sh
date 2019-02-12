@@ -44,11 +44,11 @@ fi
 if [ -z "${PERMITTED}" ]; then
   echo "The PERMITTED environment variable is unset or null, defaulting to '*'."
   echo "This means any client can mount."
-  /bin/sed -i "s/{{PERMITTED}}/*/g" /etc/exports
+  /bin/sed -i "s@{{PERMITTED}}@*@g" /etc/exports
 else
   echo "The PERMITTED environment variable is set."
   echo "The permitted clients are: ${PERMITTED}."
-  /bin/sed -i "s/{{PERMITTED}}/"${PERMITTED}"/g" /etc/exports
+  /bin/sed -i "s@{{PERMITTED}}@"${PERMITTED}"@g" /etc/exports
 fi
 
 # Check if the READ_ONLY variable is set (rather than a null string) using parameter expansion
